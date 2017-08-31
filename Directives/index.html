@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .center {
+            text-align: center;
+            background-color: #ccc;
+        }
+
+        .red {
+            color: red;
+        }
+
+        .green {
+            color: green;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5
+        }
+        .setwidth{
+            width: 300px;
+            height: 100%;
+        }
+        .left{
+            float: left;
+        }
+        
+    </style>
+</head>
+
+<body ng-app="myApp">
+    <!-- <h1>My First Directive...</h1>
+    <input type="text" ng-model="text">
+    call : <in-Call msg="title"></in-Call>          -->
+    <h1 class="center">Angular-JS Custom Directive</h1>
+    <hr>
+    <hr>
+    <h3 class="center">Basic Custom Directive</h3>
+    <basic-custom-directive></basic-custom-directive>
+    <hr>
+    <h3 class="center">Share Scope in Custom Directive</h3>
+    <div ng-controller="shareScope">
+        <share-scope></share-scope>
+    </div>
+    <hr>
+    <h3 class="center">Isolate Scope in Custom Directive</h3>
+    <ul>
+        <li>Isolate scope make Directive reuseable.</li>
+        <li>Isolate scope have three property to get data from parent scope or controller or service to manuplate data on Dom</li>
+        <li>This is a property of isloate scope(@, = , &)</li>
+        <li> ( = ) Two way data bind in Custom Directive</li>
+        <li> ( @ ) One way data bind in Custom Directive</li>
+        <li> ( & ) binding the function </li>
+    </ul>
+    <br>
+    <div>
+        <h2>First Try to get data from parent scope (myctrl)</h2>
+        <iso-scope> </iso-scope>
+        <p class="red"> it's failed get data from parent scope because we asign in our Directive (scope = {}) <br>scope = {} it's make Directive
+            to isolate and reuseable </p>
+    </div>
+    <div ng-controller="myctrl">
+        <h2>Second Try to get data from myctrl controller with shared scope.</h2>
+        <iso-scope> </iso-scope>
+        <p class="red">it is also failed to get data because this Directive is contain there on isolate scope</p>
+    </div>
+    <div ng-controller="myctrl">
+        <h2>Thrid Try to get data from outside the isloate scope</h2>
+        <ul class="green">
+            <li>if you have to pass string data use ( @ , "One way data bind") </li>
+            <li>if you need to bind the data with two way data bind use this ( = , "Two data bind")</li>
+            <li></li>
+        </ul>
+        <iso-scope title="Employe Info." info="employe" callemp="empProfile" fullinfo="profileemp"> </iso-scope>
+    </div>
+
+    <script src="./lib/angular.min.js"></script>
+    <script src="./lib/angular-route.min.js"></script>
+    <script src="./lib/angular-sanitize.min.js"></script>
+    <script src="./js/app.js"></script>
+</body>
+
+</html>

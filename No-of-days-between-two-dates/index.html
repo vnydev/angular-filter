@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+            
+            th, td {
+                padding: 8px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+            h1{
+                text-align: center;
+            }
+            h3{
+                text-align: left;
+            }
+    </style>
+</head>
+<body ng-app="myapp" ng-controller="myctrl"> 
+    <h1>Angular JS Custom Filter</h1>
+    <div>
+        <h3>/// No of days between two dates</h3>
+        <table class="table-border">
+            <thead>
+                <th>#</th>
+                <th>Startdate</th>
+                <th>Enddate</th>
+                <th>Days</th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="d in dates">
+                    <td>{{$index + 1}} </td>
+                    <td>{{d.startdate}} - {{d.startdate | formatCustomDates:d.startdate | date:'dd MMM yyyy'}} </td>
+                    <td>{{d.enddate}} - {{d.enddate | formatCustomDates:d.enddate | date:'dd MMM yyyy'}} </td>
+                    <td>{{d.days | noOfdays:d.startdate:d.enddate}} </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="lib/angular.min.js"></script>
+    <script src="custom/app.js"></script>
+</body>
+</html>
